@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ichigo</title>
+
+<link type="text/css" rel="stylesheet" href="css/animate.min.css" />
+<link type="text/css" rel="stylesheet" href="css/favor.css" />
+<link type="text/css" rel="stylesheet" href="css/loaders.min.css" />
+
+</head>
+<body>
+    <div class="wrapper">
+    <div class="container">
+        <div class="locked">
+            <span id="animationSandbox" style="display: block;" draggable="true">
+                <h3 id="warm">吃草莓吗</h3>
+                <a href="" id="ichigo" ><div class="ichigo"></div></a>
+            </span>
+        </div>
+        
+        <form class="form" style="display: none;">
+            <div class="inner">
+				<input type="password" placeholder="Password">
+				<button type="submit" id="login-button">Enter</button>
+			</div>
+        </form>
+    </div>
+    </div>
+  
+  <div id="mousemove" data-loader="ball-scale"></div>  
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    var count = 1;
+    var clickTimer = null; 
+    function testAnim(x) {
+        $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass();
+        });
+    };
+    var font = ['吃草莓吗','请双击','真拿您没办法','请摸摸我']
+    $(document).ready(function(){
+        $('#warm').removeClass().addClass('bounce animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass();
+        });
+        $("#ichigo").click(function(e){
+          e.preventDefault();
+          if (clickTimer) {  
+            console.log("clearTimeout", clickTimer);  
+            window.clearTimeout(clickTimer);  
+            clickTimer = null;  
+          }  
+          clickTimer = window.setTimeout(function() {},300);
+            if(count % 5 == 4){
+                document.getElementById("warm").innerHTML='我生气了';
+                $(".ichigo").addClass('shy');
+            }else{
+              $(".ichigo").removeClass('shy');
+                var anim = "rubberBand";
+                testAnim(anim);
+                document.getElementById("warm").innerHTML=font[count % 4];
+            }
+            count++;
+        });
+      $("#ichigo").dblclick(function(e){
+        if (clickTimer) {  
+          console.log("=clearTimeout", clickTimer);  
+          window.clearTimeout(clickTimer);  
+          clickTimer = null;  
+        }
+        var anim = "bounceOutRight";
+        testAnim(anim);
+      });
+    });
+    window.onload = function(){
+      var oTop = document.getElementById("mousemove");
+      document.onmousemove = function(evt){
+        var oEvent = evt || window.event;
+        var scrollleft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+        oTop.style.left = oEvent.clientX + scrollleft +10 +"px";
+        oTop.style.top = oEvent.clientY + scrolltop +10 + "px";
+      }
+    }
+</script>
+    
+
+</body>
+</html>
