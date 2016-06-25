@@ -3,6 +3,7 @@
 Primary style
 
 -------------------------------- */
+
 *, *::after, *::before {
   box-sizing: border-box;
 }
@@ -13,7 +14,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: Apple LiSung Light, Apple LiGothic Medium, MingLiU;
+  font-family: Apple LiSung Light, Apple LiGothic Medium, MingLiU, Microsoft YaHei;
   color: #242322;
   background-color: #ffffff;
   margin: auto;
