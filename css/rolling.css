@@ -18,6 +18,7 @@ body {
 }
 
 p { 
+    text-align: left;
   word-wrap:break-word;
   word-break:normal;
   white-space: pre-wrap;
